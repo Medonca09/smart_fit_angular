@@ -34,12 +34,13 @@ export class FormsComponent implements OnInit {
     });
   }
 
-
-
   onSubmit(): void {
+    // console.log("Evento submitEvent emitido no FormsComponent")
     let { showClosed, hour } = this.formGroup.value
     this.filteredResults = this.filterUnitsService.filter(this.results, showClosed, hour);
     this.unitService.setFilteredUnits(this.filteredResults);
+
+    this.submitEvent.emit();
   }
 
   onClean(): void {
